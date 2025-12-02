@@ -14,6 +14,11 @@ function (add_solution)
 
     enable_clang_tidy(${SOLUTION_NAME})
 
+    target_link_libraries(${SOLUTION_NAME}
+    PRIVATE
+        helpers
+    )
+
     target_compile_features(${SOLUTION_NAME}
     PRIVATE
         cxx_std_23
@@ -23,6 +28,7 @@ function (add_solution)
     PRIVATE
         -g
         -O0
+        -fconstexpr-steps=4294967295
         -Wall
         -Wbool-conversion
         -Wcast-align
